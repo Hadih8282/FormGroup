@@ -1,0 +1,48 @@
+<form [formGroup]="form" (ngSubmit)="login1()">
+  <div *ngIf="form.errors" class="alert alert-danger">
+    The username and password is invalid.
+  </div>
+  <div formGroupName="account">
+    <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>User Name</mat-label>
+          <input
+            formControlName="username"
+            matInput
+            placeholder="Enter The UerName"
+          />
+        </mat-form-field>
+        <!-- <div *ngIf="username.pending">Checking for uniqueness...</div> -->
+        <div *ngIf="username.errors?.['minlength'] && username.touched " class="alert alert-danger">Usernsme should minimum 3 characters.</div>
+        <div *ngIf="username.errors?.['required'] && username.touched "  class="alert alert-danger">Usernsme is required.</div>
+        <div *ngIf="username.errors ?.['cannotContaintSpace'] && username.touched "  class="alert alert-danger">Usernsme can not be space !!!!.</div>
+        <div *ngIf="username.errors?.['shouldBeUniquetime'] && username.touched "  class="alert alert-danger">Usernsme is hadi .</div>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Password</mat-label>
+          <input
+            formControlName="password"
+            type="password"
+            matInput
+            placeholder="Enter The Password"
+          />
+        </mat-form-field>
+        <div *ngIf="password.errors?.['minlength'] && password.touched " class="alert alert-danger">Password should minimum 6 characters.</div>
+        <div *ngIf="password.errors ?.['required'] && password.touched "  class="alert alert-danger">Password is required.</div>
+        <div *ngIf="password.errors ?.['shouldBeUnique'] && password.touched "  class="alert alert-danger"> Password is hadi.</div>
+      </div>
+    </div>
+    <button
+      
+    
+      mat-raised-button
+      color="primary"
+    >
+      Log in
+    </button>
+    </div>
+  </div>
+</form>
